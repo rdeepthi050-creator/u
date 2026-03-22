@@ -2,75 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>I Love You</title>
+<title>I ❤️ U</title>
 
 <style>
 body {
   margin: 0;
   background: #0f0f1a;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
-/* SVG container */
-svg {
-  width: 500px;
+/* container */
+.wrapper {
+  width: 400px;
   height: 200px;
 }
 
-/* Stroke animation */
-.love-path {
+/* svg */
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* stroke animation */
+.path {
   fill: none;
-  stroke: #ffffff;
-  stroke-width: 4;
+  stroke: white;
+  stroke-width: 5;
   stroke-linecap: round;
 
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
 
   animation: draw 2s ease forwards;
 }
+
+/* stagger like reel */
+.path:nth-child(1) { animation-delay: 0s; }
+.path:nth-child(2) { animation-delay: 0.6s; stroke: #ff2e63; }
+.path:nth-child(3) { animation-delay: 1.2s; }
 
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
   }
 }
-
-/* Delay each letter */
-.i { animation-delay: 0s; }
-.heart { animation-delay: 0.5s; stroke: #ff3c6f; }
-.u { animation-delay: 1s; }
-
 </style>
 </head>
 
 <body>
 
-<svg viewBox="0 0 500 200">
+<div class="wrapper">
+
+<svg viewBox="0 0 400 200">
 
   <!-- I -->
-  <path class="love-path i"
-        d="M50 40 L50 160" />
+  <path class="path"
+        d="M80 40 L80 160" />
 
   <!-- HEART -->
-  <path class="love-path heart"
-        d="M150 80 
-           C150 50, 200 50, 200 80 
-           C200 110, 150 140, 150 140 
-           C150 140, 100 110, 100 80 
-           C100 50, 150 50, 150 80 Z" />
+  <path class="path"
+        d="M200 80 
+           C200 50, 250 50, 250 80 
+           C250 120, 200 150, 200 150 
+           C200 150, 150 120, 150 80 
+           C150 50, 200 50, 200 80 Z" />
 
   <!-- U -->
-  <path class="love-path u"
+  <path class="path"
         d="M300 40 
            L300 120 
-           C300 150, 350 150, 350 120 
-           L350 40" />
+           C300 160, 360 160, 360 120 
+           L360 40" />
 
 </svg>
+
+</div>
 
 </body>
 </html>

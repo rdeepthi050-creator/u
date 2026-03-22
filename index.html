@@ -12,30 +12,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  position: relative;
-  width: 400px;
-  height: 250px;
-}
-
-/* SVG styling */
+/* SVG container */
 svg {
-  width: 100%;
-  height: 100%;
+  width: 500px;
+  height: 200px;
 }
 
-.line {
+/* Stroke animation */
+.love-path {
   fill: none;
-  stroke: white;
-  stroke-width: 6;
+  stroke: #ffffff;
+  stroke-width: 4;
   stroke-linecap: round;
 
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: draw 1.5s ease forwards;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+
+  animation: draw 2s ease forwards;
 }
 
 @keyframes draw {
@@ -44,60 +39,38 @@ svg {
   }
 }
 
-/* Text */
-.text {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  font-size: 60px;
-  letter-spacing: 8px;
-  color: white;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards 1.6s;
-}
+/* Delay each letter */
+.i { animation-delay: 0s; }
+.heart { animation-delay: 0.5s; stroke: #ff3c6f; }
+.u { animation-delay: 1s; }
 
-.heart {
-  color: #ff3c6f;
-  text-shadow: 0 0 20px #ff3c6f;
-}
-
-/* Glow effect */
-.text span {
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #fff; }
-  to { text-shadow: 0 0 25px #ff3c6f; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<svg viewBox="0 0 500 200">
 
-  <!-- SVG lines (THIS is the real trick used in reel) -->
-  <svg viewBox="0 0 400 250">
-    <!-- Left vertical line -->
-    <path d="M100 20 L100 230" class="line"/>
+  <!-- I -->
+  <path class="love-path i"
+        d="M50 40 L50 160" />
 
-    <!-- Right vertical line -->
-    <path d="M300 20 L300 230" class="line"/>
-  </svg>
+  <!-- HEART -->
+  <path class="love-path heart"
+        d="M150 80 
+           C150 50, 200 50, 200 80 
+           C200 110, 150 140, 150 140 
+           C150 140, 100 110, 100 80 
+           C100 50, 150 50, 150 80 Z" />
 
-  <!-- Text -->
-  <div class="text">
-    I <span class="heart">❤</span> U
-  </div>
+  <!-- U -->
+  <path class="love-path u"
+        d="M300 40 
+           L300 120 
+           C300 150, 350 150, 350 120 
+           L350 40" />
 
-</div>
+</svg>
 
 </body>
 </html>
